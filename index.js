@@ -14,11 +14,6 @@ function run() {
     n = splitData[0].split(' ').map((p) => {return parseInt(p)})[0]
     k = splitData[0].split(' ').map((p) => {return parseInt(p)})[1]
 
-    //find the windows of k days
-    //fakePrices = [1, 2, 3, 4, 5]
-    //fakeWindow1 = [1, 2, 3]
-    //fakeWindow2 = [2, 3, 4]
-    //fakeWindow3 = [3, 4, 5]
     let windows = []
     for (let i = 0; i+k <= n; i++){
       windows.push(prices.slice(i,i+k))
@@ -26,34 +21,53 @@ function run() {
     console.log('this is windows')
     console.log(windows)
     windows.forEach((w) => {
-      w.getAnswer()
+      console.log(w.getAnswer())
     })
   })
 
 }
 
+
+function getPrevTriangleNumber(n) {
+  return ((n-1)*n)/2
+}
+
 function getAnswer(){
+  let w = this;
+  
+  // if the window array is sorted, then it's the answer is the prev triangle number
+  let sortedWindow = w.slice().sort((a, b) => {return a - b});
+  let reverseSortedWindow = w.slice().sort((a, b) => {return b - a});
+
+  if (sortedWindow.join(',') === w.join(',')) {
+    return getPrevTriangleNumber(w.length)
+  }
+  // if the window is reverse sorted, then it's answer is the negative prev triangle number
+  if (reverseSortedWindow.join(',') === w.join(',')){
+    return (-1*getPrevTriangleNumber(w.length))
+  }
+
+
   //w = current window array. should output answer
   //[188930, 194123, 201345]
 
   /*
-    for (let i = 0; i < n; i++){
+    for (let i = 0; i < k; i++){
       let increasingCount = 0;
       let decreasingCount = 0;
 
       let val1 = w[i]
       let val2 = w[i+1]
 
-      let increasing? = null
+      let currentlyIncreasing = null
 
       if (val2 > val1) {
         increasingCount += 1
-        increasing = true;
+        currentlyIncreasing = true;
       }
 
     }
   */
-  let w = this;
   console.log(increasingCount - decreasingCount);
 }
 
