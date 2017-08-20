@@ -1,10 +1,10 @@
-var fs = require('fs');
+const fs = require('fs');
 
 const findSubrangeLengths = require('./findSubrangeLengths');
 const checkSortedUniq = require('./checkSortedUniq');
 const calculateTriangeValues = require('./calculateTriangeValues')
 
-var filename = process.argv[2];
+const filename = process.argv[2];
 
 function run() {
   let prices, n, k;
@@ -24,15 +24,11 @@ function run() {
       windows.push(prices.slice(i,i+k))
     }
     windows.forEach((w) => {
-      console.log(getDiff(w));
+      checkSortedUniq(w)
+      let subranges = findSubrangeLengths(w)
+      console.log(calculateTriangeValues(subranges));
     });
   });
-}
-
-function getDiff(w){
-  checkSortedUniq(w)
-  let subranges = findSubrangeLengths(w)
-  return calculateTriangeValues(subranges)
 }
 
 function ensureFileArg() {
