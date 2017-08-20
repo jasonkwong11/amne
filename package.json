@@ -4,7 +4,8 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "jest",
+    "build": "rimraf dist/ && babel ./ --out-dir dist/ --ignore ./node_modules,./.babelrc,./package.json,./npm-debug.log --copy-files"
   },
   "author": "",
   "license": "ISC",
@@ -12,8 +13,12 @@
     "lodash": "^4.17.4"
   },
   "devDependencies": {
-    "babel-cli": "^6.26.0",
-    "babel-preset-es2015": "^6.24.1",
-    "babel-preset-stage-2": "^6.24.1"
+    "babel-cli": "*",
+    "babel-core": "*",
+    "babel-preset-es2015-node5": "*",
+    "babel-preset-stage-3": "*",
+    "babel-register": "*",
+    "jest": "^20.0.4",
+    "rimraf": "^2.6.1"
   }
 }
