@@ -1,6 +1,6 @@
 const getTriangleNumber = require('./getTriangleNumber')
 
-function calculateTriangeValues(lengthsObject) {
+function calculateTriangleValues(lengthsObject) {
   let incLengths = lengthsObject.incSubrangesLengths
   let decLengths = lengthsObject.decSubrangesLengths
 
@@ -14,4 +14,4 @@ function calculateTriangeValues(lengthsObject) {
   return (iTriangleNum - dTriangleNum)
 }
 
-module.exports = calculateTriangeValues
+module.exports = calculateTriangleValues

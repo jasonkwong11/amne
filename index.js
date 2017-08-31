@@ -2,7 +2,7 @@ const fs = require('fs');
 
 const findSubrangeLengths = require('./findSubrangeLengths');
 const checkSortedUniq = require('./checkSortedUniq');
-const calculateTriangeValues = require('./calculateTriangeValues')
+const calculateTriangleValues = require('./calculateTriangleValues')
 
 const filename = process.argv[2];
 
@@ -26,7 +26,7 @@ function run() {
     windows.forEach((w) => {
       checkSortedUniq(w)
       let subranges = findSubrangeLengths(w)
-      console.log(calculateTriangeValues(subranges));
+      console.log(calculateTriangleValues(subranges));
     });
   });
 }
